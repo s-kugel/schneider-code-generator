@@ -1,0 +1,13 @@
+[versions]
+lombok = "1.18.34"
+guava = "33.2.1-jre"
+spotless = "6.25.0"
+gradle-publish = "1.2.1"
+
+[plugins]
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+gradle-publish = { id = "com.gradle.plugin-publish", version.ref = "gradle-publish" }
+
+[libraries]
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
