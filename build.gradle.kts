@@ -14,6 +14,8 @@ dependencies {
     testImplementation(libs.lombok)
     testAnnotationProcessor(libs.lombok)
     implementation(libs.guava)
+    implementation(libs.freemarker)
+    implementation(libs.mysql)
 }
 
 java {
@@ -23,6 +25,13 @@ java {
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
+}
+
+tasks.withType<Javadoc> {
+    options {
+        this as StandardJavadocDocletOptions
+        addMultilineStringsOption("Xdoclint:none").setValue(listOf("-quiet"))
+    }
 }
 
 spotless {
@@ -45,11 +54,11 @@ gradlePlugin {
     plugins {
         create("enumGenerator") {
             id = "com.s-kugel.schneider.plugin.enum-generator"
-            implementationClass = "com.s_kugel.schneider.generator.EnumGenerator"
+            implementationClass = "com.s_kugel.schneider.generator.enums.EnumGeneratorPlugin"
         }
         create("entityGenerator") {
             id = "com.s-kugel.schneider.plugin.entity-generator"
-            implementationClass = "com.s_kugel.schneider.generator.EntityGenerator"
+            implementationClass = "com.s_kugel.schneider.generator.entity.EntityGeneratorPlugin"
         }
     }
 }

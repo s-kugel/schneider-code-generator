@@ -1,22 +1,21 @@
-package com.s_kugel.schneider.generator;
+package com.s_kugel.schneider.generator.entity;
 
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 
-/** enum generator */
-public class EnumGenerator implements Plugin<Project> {
-
-  /** default constructor */
-  public EnumGenerator() {
-    // non-use
-  }
+/**
+ * Entity Generator Plugin
+ *
+ * @author i-zacky
+ */
+public class EntityGeneratorPlugin implements Plugin<Project> {
 
   @Override
   public void apply(Project project) {
     project
         .getTasks()
         .register(
-            "generateEnum",
+            "generateEntity",
             task -> {
               task.setGroup("code generator");
               task.doLast(s -> System.out.println("Hello from plugin 'org.example.greeting'"));
